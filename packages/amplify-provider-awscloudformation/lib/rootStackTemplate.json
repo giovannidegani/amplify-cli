@@ -32,7 +32,7 @@
         "AuthRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
-                "PermissionsBoundary": { "Ref": "PermissionBoundary" },
+                "PermissionsBoundary": { "Ref": "PermissionsBoundary" },
                 "RoleName": {"Ref": "AuthRoleName"},
                 "AssumeRolePolicyDocument": {
                   "Version": "2012-10-17",
@@ -57,7 +57,7 @@
         "UnauthRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
-                "PermissionsBoundary": { "Ref": "PermissionBoundary" },
+                "PermissionsBoundary": { "Ref": "PermissionsBoundary" },
                 "RoleName": {"Ref": "UnauthRoleName"},
                 "AssumeRolePolicyDocument":{
                   "Version": "2012-10-17",

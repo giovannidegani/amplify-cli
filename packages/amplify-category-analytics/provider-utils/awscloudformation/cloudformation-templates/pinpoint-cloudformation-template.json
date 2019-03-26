@@ -79,7 +79,7 @@
             "Condition": "ShouldCreatePinpointApp",
             "Type": "AWS::IAM::Role",
             "Properties": {
-                "PermissionsBoundary": { "Ref": "PermissionBoundary" },
+                "PermissionsBoundary": { "Ref": "PermissionsBoundary" },
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
