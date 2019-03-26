@@ -2,6 +2,11 @@
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "Lambda resource stack creation using Amplify CLI",
     "Parameters": {
+        "PermissionsBoundary": {
+            "Type": "String",
+            "Default": "network-boundary",
+            "Description": "Permission Boundary for the IAM Role creation"
+         },
         "env": {
             "Type": "String"
         }<%if (props.dependsOn && props.dependsOn.length > 0) { %>,<% } %>
@@ -63,6 +68,7 @@
         "LambdaExecutionRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
+                "PermissionsBoundary": { "Ref": "PermissionBoundary" },
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",

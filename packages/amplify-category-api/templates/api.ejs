@@ -10,6 +10,10 @@ Parameters:
     Type: String
     Default: "EmberServerlessWebClient"
     Description: "Cognito user pools app client name"
+  PermissionsBoundary:
+    Type: String
+    Default: 'network-boundary'
+    Description: Permission Boundary for the IAM Role creation
 Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
@@ -307,6 +311,7 @@ Resources:
   UnauthenticatedRole:
     Type: AWS::IAM::Role
     Properties:
+      PermissionsBoundary: !Ref 'PermissionsBoundary'
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -334,6 +339,7 @@ Resources:
   AuthenticatedRole:
     Type: AWS::IAM::Role
     Properties:
+      PermissionsBoundary: !Ref 'PermissionsBoundary'
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:

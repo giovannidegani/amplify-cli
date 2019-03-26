@@ -1,6 +1,10 @@
 ---
 <%if (props.dependsOn && props.dependsOn.length > 0) { %>
 Parameters:
+  PermissionsBoundary:
+    Type: String
+    Default: 'network-boundary'
+    Description: Permission Boundary for the IAM Role creation
 <% for(var i=0; i < props.dependsOn.length; i++) { %>
 <% for(var j=0; j < props.dependsOn[i].attributes.length; j++) { %>
   <%= props.dependsOn[i].category %><%= props.dependsOn[i].resourceName %><%= props.dependsOn[i].attributes[j] %>:
@@ -57,6 +61,7 @@ Resources:
   ServiceRole:
     Type: 'AWS::IAM::Role'
     Properties:
+      PermissionsBoundary: !Ref 'PermissionsBoundary'
       RoleName: <%= props.serviceRoleName %>
       AssumeRolePolicyDocument:
         Version: 2012-10-17

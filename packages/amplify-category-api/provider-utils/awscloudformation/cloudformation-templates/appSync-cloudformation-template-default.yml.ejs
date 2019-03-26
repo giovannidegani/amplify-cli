@@ -1,5 +1,10 @@
 ---
 Description: AWSAppSync DynamoDB Example
+Parameters:
+  PermissionsBoundary:
+    Type: String
+    Default: 'network-boundary'
+    Description: Permission Boundary for the IAM Role creation
 Resources:
   GraphQLApi:
     Type: "AWS::AppSync::GraphQLApi"
@@ -10,6 +15,7 @@ Resources:
   ServiceRole:
     Type: 'AWS::IAM::Role'
     Properties:
+      PermissionsBoundary: !Ref 'PermissionsBoundary'
       RoleName: <%= props.serviceRoleName %>
       AssumeRolePolicyDocument:
         Version: 2012-10-17
